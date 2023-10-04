@@ -20,14 +20,13 @@ describe('engines.ts', () => {
     expect(result).toEqual(['20', '18', '16'])
   })
 
-  it.each([
-    [{ node: '18' }],
-    [{ node: '18.x' }],
-    [{ node: '>=18 <19' }],
-  ])('returns correct Node major versions when engines=%p', async engines => {
-    const result = await getPackageNodeVersions({ engines })
-    expect(getManifestFromRepoMock).toHaveBeenCalled()
-    console.log(result)
-    expect(result).toEqual(['18'])
-  })
+  it.each([[{ node: '18' }], [{ node: '18.x' }], [{ node: '>=18 <19' }]])(
+    'returns correct Node major versions when engines=%p',
+    async engines => {
+      const result = await getPackageNodeVersions({ engines })
+      expect(getManifestFromRepoMock).toHaveBeenCalled()
+      console.log(result)
+      expect(result).toEqual(['18'])
+    }
+  )
 })
