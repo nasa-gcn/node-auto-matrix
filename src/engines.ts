@@ -1,7 +1,7 @@
 import { intersects, major } from 'semver'
 import { getManifestFromRepo } from '@actions/tool-cache'
 
-async function getNodeMajorVersions() {
+async function getNodeMajorVersions(): Promise<string[]> {
   const manifest = await getManifestFromRepo(
     'actions',
     'node-versions',
@@ -25,7 +25,7 @@ export async function getPackageNodeVersions({
   engines
 }: {
   engines?: { node?: string }
-}) {
+}): Promise<string[]> {
   let versions = await getNodeMajorVersions()
   const range = engines?.node
 

@@ -4,7 +4,7 @@ const map: Record<string, string> = {
   win32: 'windows'
 }
 
-function getRunsOnForPlatform(platform: string) {
+function getRunsOnForPlatform(platform: string): string {
   const runsOn = map[platform] ?? platform
   return `${runsOn}-latest`
 }
@@ -17,7 +17,7 @@ const all = ['darwin', 'linux', 'win32']
  * @see https://docs.npmjs.com/cli/v10/configuring-npm/package-json#os
  * @see https://nodejs.org/api/process.html#processplatform
  */
-function getPackagePlatforms(os: string[] = []) {
+function getPackagePlatforms(os: string[] = []): string[] {
   const forbidden: string[] = []
   let allowed: string[] = []
 
@@ -42,6 +42,6 @@ function getPackagePlatforms(os: string[] = []) {
  * @see https://docs.npmjs.com/cli/v10/configuring-npm/package-json#os
  * @see https://nodejs.org/api/process.html#processplatform
  */
-export function getPackageRunsOn({ os }: { os?: string[] }) {
+export function getPackageRunsOn({ os }: { os?: string[] }): string[] {
   return getPackagePlatforms(os ?? []).map(getRunsOnForPlatform)
 }

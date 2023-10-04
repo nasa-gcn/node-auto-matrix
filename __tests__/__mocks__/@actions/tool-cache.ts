@@ -1,4 +1,6 @@
-export async function getManifestFromRepo() {
+import type {IToolRelease} from '@actions/tool-cache'
+
+export async function getManifestFromRepo(): Promise<IToolRelease[]> {
   return [
     { version: '20.3.0', stable: true, release_url: '', files: [] },
     { version: '20.2.1', stable: true, release_url: '', files: [] },
