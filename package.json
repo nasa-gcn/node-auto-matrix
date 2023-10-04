@@ -1,8 +1,7 @@
 {
-  "name": "typescript-action",
+  "name": "@nasa-gcn/node-auto-matrix",
   "description": "GitHub Actions TypeScript template",
   "version": "0.0.0",
-  "author": "",
   "private": true,
   "homepage": "https://github.com/actions/typescript-action",
   "repository": {
@@ -65,7 +64,9 @@
     ]
   },
   "dependencies": {
-    "@actions/core": "^1.10.1"
+    "@actions/core": "^1.10.1",
+    "@actions/tool-cache": "^2.0.1",
+    "semver": "^7.5.4"
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",

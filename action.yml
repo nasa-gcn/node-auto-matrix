@@ -1,18 +1,12 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Plan build matrix from Node.js package.json file'
+description: 'Automatically determine supported Node.js versions and GitHub Actions runners from the contents of your project's package.json file.'
+author: 'nasa-gcn'
 
-# Define your inputs here.
-inputs:
-  milliseconds:
-    description: 'Your input description here'
-    required: true
-    default: '1000'
-
-# Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  nodeVersion:
+    description: 'Array of values for actions/setup-node node-version input'
+  runsOn:
+    description: 'Array of values for jobs.<job_id>.steps[*].run'
 
 runs:
   using: node20

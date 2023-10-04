@@ -1,5 +1,7 @@
 import * as core from '@actions/core'
-import { wait } from './wait'
+import { readFile } from 'fs/promises'
+import { getPackageRunsOn } from './os'
+import { getPackageNodeVersions } from './engines'
 
 /**
  * The main function for the action.
@@ -7,18 +9,16 @@ import { wait } from './wait'
  */
 export async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
+    const packageJson = JSON.parse(
+      await readFile('package.json', { encoding: 'utf-8' })
+    )
 
-    // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-    core.debug(`Waiting ${ms} milliseconds ...`)
-
-    // Log the current timestamp, wait, then log the new timestamp
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const runsOn = getPackageRunsOn(packageJson)
+    const nodeVersion = await getPackageNodeVersions(packageJson)
 
     // Set outputs for other workflow steps to use
-    core.setOutput('time', new Date().toTimeString())
+    core.setOutput('runsOn', runsOn)
+    core.setOutput('nodeVersion', nodeVersion)
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)
