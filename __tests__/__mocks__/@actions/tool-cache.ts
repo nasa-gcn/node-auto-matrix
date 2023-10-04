@@ -1,4 +1,4 @@
-import type {IToolRelease} from '@actions/tool-cache'
+import type { IToolRelease } from '@actions/tool-cache'
 
 export async function getManifestFromRepo(): Promise<IToolRelease[]> {
   return [
