@@ -1,5 +1,7 @@
 name: 'Plan build matrix from Node.js package.json file'
-description: "Automatically determine supported Node.js versions and GitHub Actions runners from the contents of your project's package.json file."
+description:
+  "Automatically determine supported Node.js versions and GitHub Actions runners
+  from the contents of your project's package.json file."
 author: 'nasa-gcn'
 
 outputs:
