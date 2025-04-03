@@ -4,6 +4,17 @@ description:
   from the contents of your project's package.json file."
 author: 'nasa-gcn'
 
+inputs:
+  runner-linux:
+    description: Runner image for linux jobs
+    default: ubuntu-latest
+  runner-macos:
+    description: Runner image for macOS jobs
+    default: macos-latest
+  runner-windows:
+    description: Runner image for Windows jobs
+    default: windows-latest
+
 outputs:
   nodeVersion:
     description: 'Array of values for actions/setup-node node-version input'
