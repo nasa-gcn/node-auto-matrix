@@ -1,6 +1,6 @@
 import { getPackageRunsOn } from '../src/os'
 
-describe('wait.ts', () => {
+describe('os.ts', () => {
   it.each([[undefined], [[]], [['darwin', 'linux', 'win32']]])(
     'returns correct runs-on value for os=%p',
     os => {
