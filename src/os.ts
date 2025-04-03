@@ -1,12 +1,13 @@
+import * as core from '@actions/core'
+
 const map: Record<string, string> = {
   darwin: 'macos',
-  linux: 'ubuntu',
+  linux: 'linux',
   win32: 'windows'
 }
 
 function getRunsOnForPlatform(platform: string): string {
-  const runsOn = map[platform] ?? platform
-  return `${runsOn}-latest`
+  return core.getInput(`runner-${map[platform] ?? platform}`)
 }
 
 const all = ['darwin', 'linux', 'win32']
