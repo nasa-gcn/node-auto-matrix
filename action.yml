@@ -22,5 +22,5 @@ outputs:
     description: 'Array of values for jobs.<job_id>.steps[*].run'
 
 runs:
-  using: node20
+  using: node24
   main: dist/index.js

@@ -12,12 +12,12 @@ describe('engines.ts', () => {
     [undefined],
     [{ node: undefined }],
     [{ node: '>=16' }],
-    [{ node: '>=16.1 <21.3.5' }]
+    [{ node: '>=16.1 <25.3.5' }]
   ])('returns correct Node major versions when engines=%p', async engines => {
     const result = await getPackageNodeVersions({ engines })
     expect(getManifestFromRepoMock).toHaveBeenCalled()
     console.log(result)
-    expect(result).toEqual(['20', '18', '16'])
+    expect(result).toEqual(['24', '22', '20', '18', '16'])
   })
 
   it.each([[{ node: '18' }], [{ node: '18.x' }], [{ node: '>=18 <19' }]])(
