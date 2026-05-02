@@ -34,7 +34,7 @@ describe('action', () => {
       'ubuntu-latest',
       'windows-latest'
     ])
-    expect(setOutputMock).toHaveBeenCalledWith('nodeVersion', ['20'])
+    expect(setOutputMock).toHaveBeenCalledWith('nodeVersion', ['24'])
   })
 
   it('sets a failed status', async () => {
